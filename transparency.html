@@ -1,0 +1,111 @@
+<!DOCTYPE html>
+<html lang="en">
+<head>
+    <meta charset="UTF-8">
+    <meta name="viewport" content="width=device-width, initial-scale=1">
+    <meta name="theme-color" content="#f5f7fa">
+    <meta name="description" content="View successful contributions received by Just A Drop through PayU.">
+    <title>Payment Transparency | Just A Drop</title>
+    <link rel="icon" type="image/png" href="./assets/logo.ico">
+    <link href="https://fonts.googleapis.com/css2?family=Balsamiq+Sans:wght@400;700&display=swap" rel="stylesheet">
+    <link rel="stylesheet" href="./styles/transparency.css">
+</head>
+<body>
+    <header class="topbar">
+        <a class="brand" href="./index.html">Just-a-Drop</a>
+        <a class="back-link" href="./index.html">Back to home <span aria-hidden="true">↗</span></a>
+    </header>
+
+    <main class="page-shell">
+        <section class="intro">
+            <div>
+                <p class="eyebrow">JUST A DROP · OPEN RECORDS</p>
+                <h1>Payment transparency</h1>
+                <p class="intro-copy">A clear record of contributions received through PayU.</p>
+            </div>
+            <div class="feed-status"><span class="status-dot"></span><span id="feed-status">Connecting to PayU</span></div>
+        </section>
+
+        <section class="summary-grid" aria-label="Collection summary">
+            <article class="summary-card summary-card-primary">
+                <p class="summary-label">Successfully collected</p>
+                <p class="summary-value" id="total-collected">—</p>
+                <p class="summary-note">Captured payments only</p>
+            </article>
+            <article class="summary-card">
+                <p class="summary-label">Successful payments</p>
+                <p class="summary-value" id="payment-count">—</p>
+                <p class="summary-note">Transactions received</p>
+            </article>
+            <article class="summary-card">
+                <p class="summary-label">Average contribution</p>
+                <p class="summary-value" id="average-payment">—</p>
+                <p class="summary-note">Across successful payments</p>
+            </article>
+        </section>
+
+        <section class="filter-panel" aria-labelledby="filter-heading">
+            <div class="filter-heading-row">
+                <div>
+                    <h2 id="filter-heading">Transaction history</h2>
+                    <p>Choose a date range to view contributions.</p>
+                </div>
+                <div class="quick-filters" aria-label="Quick date filters">
+                    <button type="button" data-range="7">7 days</button>
+                    <button type="button" data-range="30">30 days</button>
+                    <button type="button" data-range="month">This month</button>
+                </div>
+            </div>
+            <form id="date-filter" class="date-filter">
+                <div class="field">
+                    <label for="from-date">From date</label>
+                    <input type="date" id="from-date" name="from" required>
+                </div>
+                <div class="field">
+                    <label for="to-date">To date</label>
+                    <input type="date" id="to-date" name="to" required>
+                </div>
+                <button type="submit" class="apply-button" id="apply-filter">Apply filter</button>
+            </form>
+            <p class="range-hint">Date ranges are limited to 31 days per request.</p>
+        </section>
+
+        <div class="message-panel" id="message-panel" role="status" aria-live="polite" hidden></div>
+
+        <section class="transactions-panel" aria-labelledby="transactions-heading">
+            <div class="transactions-heading">
+                <div>
+                    <h2 id="transactions-heading">Successful contributions</h2>
+                    <p id="range-label">Last 7 days</p>
+                </div>
+                <span class="success-label"><span class="status-dot"></span> PayU captured</span>
+            </div>
+            <div class="table-scroll">
+                <table>
+                    <thead>
+                        <tr>
+                            <th scope="col">Date</th>
+                            <th scope="col">Payment reference</th>
+                            <th scope="col">Method</th>
+                            <th scope="col" class="amount-heading">Amount</th>
+                        </tr>
+                    </thead>
+                    <tbody id="transaction-rows">
+                        <tr><td colspan="4" class="table-placeholder">Loading successful payments…</td></tr>
+                    </tbody>
+                </table>
+            </div>
+            <div class="empty-state" id="empty-state" hidden>No successful payments were found for this date range.</div>
+        </section>
+
+        <p class="transparency-note">This page shows successful payments received through PayU. It does not represent fund utilisation, expenses or disbursements. Customer contact details and UPI IDs are never displayed.</p>
+    </main>
+
+    <footer class="footer">
+        <span>© Just A Drop</span>
+        <a href="./index.html#contact">Contact us</a>
+    </footer>
+
+    <script src="./scripts/transparency.js"></script>
+</body>
+</html>
